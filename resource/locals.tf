@@ -9,5 +9,5 @@ locals {
     department   = local.team
     environment  = local.environment
   }
-  # eks_cluster_name = data.terraform_remote_state.eks_terraform_cluster.outputs.eks_cluster_id
+  # eks_cluster_name = data.terraform_remote_state.eks_terraform_cluster.outputs.cluster_id
 }
