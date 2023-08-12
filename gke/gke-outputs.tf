@@ -1,15 +1,15 @@
 output "project_id" {
   description = "Project ID"
-  value = var.project_id
+  value       = var.project_id
 }
 output "location" {
   description = "location"
-  value = var.region
+  value       = var.region
 }
 
 output "region" {
   description = "location"
-  value = var.region
+  value       = var.region
 }
 
 output "cluster_id" {

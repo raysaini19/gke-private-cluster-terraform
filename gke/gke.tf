@@ -28,47 +28,49 @@ module "gke" {
   node_pools = [
     {
       name            = "node-pool"
-      machine_type    = "e2-micro"
-      node_locations  = "europe-west2-b,europe-west2-c,europe-west2-a"
-      min_count       = 1
-      max_count       = 2
+      machine_type    = "e2-standard-2"
+      node_locations  = "us-east1-b,us-east1-c"
+      min_count       = 3
+      max_count       = 5
       disk_size_gb    = 30
       spot            = false
+      auto_upgrade    = true
+      auto_repair     = true
+      autoscaling     = true
       service_account = "project-service-account@${var.project_id}.iam.gserviceaccount.com"
     },
   ]
-
-
   node_pools_oauth_scopes = {
     all = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/trace.append",
+      "https://www.googleapis.com/auth/service.management.readonly",
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/servicecontrol",
     ]
   }
-
-
   node_pools_labels = {
     all = {}
-
-    default-node-pool = {
-      default-node-pool = true
+    node-pool = {
+      node-pool = true
     }
   }
 
   node_pools_metadata = {
     all = {}
-
-    default-node-pool = {
-      node-pool-metadata-custom-value = "my-node-pool"
+    node-pool = {
+      shutdown-script                 = "kubectl --kubeconfig=/var/lib/kubelet/kubeconfig drain --force=true --ignore-daemonsets=true --delete-local-data \"$HOSTNAME\""
+      node-pool-metadata-custom-value = "node-pool"
     }
   }
 
   node_pools_taints = {
     all = []
 
-    default-node-pool = [
+    node-pool = [
       {
-        key    = "default-node-pool"
+        key    = "node-pool"
         value  = true
         effect = "PREFER_NO_SCHEDULE"
       },
@@ -77,9 +79,8 @@ module "gke" {
 
   node_pools_tags = {
     all = []
-
-    default-node-pool = [
-      "default-node-pool",
+    node-pool = [
+      "node-pool",
     ]
   }
   depends_on = [module.gcp-network]

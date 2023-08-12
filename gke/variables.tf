@@ -8,3 +8,8 @@ variable "region" {
   description = "The region to host the cluster in"
   default     = ""
 }
+variable "env_name" {
+  type        = string
+  description = "The environment for the GKE cluster"
+  default     = "dev"
+}

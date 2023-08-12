@@ -6,6 +6,23 @@ terraform {
       version = "~> 4.69.1"
       # region = "europe-west2"
     }
+    local = {
+      source  = "hashicorp/local"
+      version = ">= 2.0.0"
+      # region = "europe-west2"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.0.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.1"
+    }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = ">= 1.7.0"
+    }
   }
 }
 

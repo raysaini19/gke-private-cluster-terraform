@@ -3,11 +3,6 @@ variable "cluster_name" {
   description = "The name for the GKE cluster"
   default     = ""
 }
-variable "env_name" {
-  type        = string
-  description = "The environment for the GKE cluster"
-  default     = "dev"
-}
 variable "network" {
   type        = string
   description = "The VPC network created to host the cluster in"
@@ -31,5 +26,5 @@ variable "ip_range_services_name" {
 variable "zones" {
   type        = list(string)
   description = "The project ID to host the cluster in"
-  default     = ["europe-west2-a", "europe-west2-b"]
+  default     = ["us-east1-c", "us-east1-b", "us-east1-d"]
 }
