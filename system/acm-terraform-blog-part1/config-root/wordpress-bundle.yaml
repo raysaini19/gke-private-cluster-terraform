@@ -18,6 +18,7 @@
 # spec:
 #   git:
 #     syncBranch: master
+
 ---
 apiVersion: v1
 kind: Namespace
