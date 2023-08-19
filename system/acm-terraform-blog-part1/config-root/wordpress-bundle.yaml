@@ -11,13 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: configmanagement.gke.io/v1
-kind: Repo
-metadata:
-  name: terraform-google-kubernetes-engine
-spec:
-  git:
-    syncBranch: master
+# apiVersion: configmanagement.gke.io/v1
+# kind: Repo
+# metadata:
+#   name: terraform-google-kubernetes-engine
+# spec:
+#   git:
+#     syncBranch: master
 ---
 apiVersion: v1
 kind: Namespace
